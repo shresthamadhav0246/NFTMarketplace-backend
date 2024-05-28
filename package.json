@@ -10,5 +10,7 @@
     "express": "^4.19.2",
     "mongodb": "^6.6.2",
     "mongoose": "^8.4.0"
-  }
+  },
+  
+  "proxy": "https://nftmarketplacemadhab.netlify.app"
 }
