@@ -43,6 +43,11 @@ app.use("/api/likes", require("./routes/likeRoutes"));
 app.use("/api/follows", require("./routes/followRoutes"));
 app.use("/api/chats", require("./routes/chatRoutes"));
 
+// Catch-all route to serve the testing page
+app.get("/test", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "index.html"));
+});
+
 // Start the server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
