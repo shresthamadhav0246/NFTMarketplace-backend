@@ -10,8 +10,7 @@
     "express": "^4.19.2",
     "http-proxy-middleware": "^3.0.0",
     "mongodb": "^6.6.2",
-    "mongoose": "^8.4.0",
-    "vercel": "^34.2.3"
+    "mongoose": "^8.4.0"
   },
   "scripts": {
     "start": "node server.js"

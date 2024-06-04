@@ -8,14 +8,12 @@ dotenv.config();
 
 const app = express();
 
-// Middleware
 app.use(
   cors({
-    origin: [
-      "https://main--cryptocanvasmarket.netlify.app",
-      "http://localhost:3000",
-    ], // Allow both production and development origins
-    optionsSuccessStatus: 200,
+    credentials: true,
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS",
+    allowedHeaders: ["Content-Type", "Authorization"],
+    origin: ["http://localhost:3000", "http://localhost:3030"], // whatever ports you used in frontend
   })
 );
 
@@ -24,14 +22,10 @@ app.use(express.urlencoded({ extended: true }));
 // Enable Mongoose debugging
 mongoose.set("debug", true);
 
-// Route your frontend requests to the proxy
-app.use(
-  "/api",
-  proxy({
-    target: "https://backend-5nhphh1bg-madhab-shresthas-projects.vercel.app",
-    changeOrigin: true,
-  })
-);
+app.get("/:name", (req, res) => {
+  let name = req.params.name;
+  res.json({ message: `Hello ${name}` });
+});
 
 // Connect to MongoDB
 mongoose
